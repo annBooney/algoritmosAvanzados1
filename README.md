@@ -2,10 +2,12 @@
 Actividad 1. Diseño, análisis y comparación de algoritmos
 Implementación y comparación de tres algoritmos para calcular la subsecuencia conmún más larga o LCS.
 
-## Estructura del proyecto
+Estructura del proyecto
 ------------------------
+
+```
 algoritmosAvanzados1/
-├── README.md                    # Este archivo
+├── README.md                    
 ├── ejecutar.php                 # Archivo principal
 ├── algoritmos/
 │   ├── recursiva.php            # Versión A: Recursiva
@@ -13,6 +15,7 @@ algoritmosAvanzados1/
 │   └── dinamica.php             # Versión C: Programación Dinámica
 └── utils/
     └── funciones.php            # Funciones auxiliares
+```
 
 Requisitos
 -----------
