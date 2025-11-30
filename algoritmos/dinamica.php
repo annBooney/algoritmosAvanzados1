@@ -68,7 +68,7 @@
             }
         }
 
-        echo "\nTabla de Programación Dinámica:\n";
+        echo "Tabla de Programación Dinámica:\n";
         echo "          ";  
         printf("%4s", "ε");
         for ($j = 0; $j < $m; $j++) {

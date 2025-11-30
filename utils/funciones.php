@@ -12,7 +12,7 @@ function medir_rendimiento($funcion, $x, $y, $nombre){
     gc_collect_cycles(); // Limpiar ciclos de recolección de basura
     $memoria_inicial = memory_get_usage(true);
     $tiempo_inicial = microtime(true);
-
+    $exito = true;
     try {
         list($longitud, $lcs) = $funcion($x, $y);
     } catch (Exception $e) {
@@ -28,13 +28,13 @@ function medir_rendimiento($funcion, $x, $y, $nombre){
 
     return array(
         'nombre'        => $nombre,
-        'longitud'      => $longitud,
+        'longitud_lcs'  => $longitud,
         'lcs'           => $lcs,
         'tiempo_ms'     => $tiempo_ms,
         'memoria_usada' => $memoria_usada,
         'memoria_mb'    => $memoria_usada / (1024 * 1024),
         'exito'         => $exito,
-        "lcs_preview"  => strlen($lcs) > 50 ? substr($lcs, 0, 50) . "..." : $lcs
+        "lcs_preview"   => strlen($lcs) > 50 ? substr($lcs, 0, 50) . "..." : $lcs
     );
 }
 
@@ -48,7 +48,7 @@ function mostrar_tabla_resultados($resultados) {
     
     foreach ($resultados as $r) {
         $nombre = str_pad(substr($r['nombre'], 0, 20), 20);
-        $longitud = str_pad($r['lcs'], 11);
+        $longitud = str_pad($r['longitud_lcs'], 11);
         $preview = str_pad(substr($r['lcs_preview'], 0, 14), 14);
         $tiempo = str_pad(number_format($r['tiempo_ms'], 2), 10);
         $memoria = str_pad(number_format($r['memoria_mb'], 4), 10);
@@ -62,10 +62,6 @@ function mostrar_tabla_resultados($resultados) {
 
 
 function mostrar_conclusiones() {
-    echo "\n";
-    echo "====================\n";
-    echo "  CONCLUSIONES\n";
-    echo "====================\n";
     echo "\n";
     echo "VERSIÓN A - RECURSIVA DIRECTA\n";
     echo "  - Complejidad temporal: O(2^(n+m)) - Exponencial.\n";

@@ -14,8 +14,8 @@
         $fila_anterior = array_fill(0, $m + 1, 0);
         $fila_actual = array_fill(0, $m + 1, 0);
 
-        for ($i = 1; $i <= $n; $i++) {
-            for ($j = 1; $j <= $m; $j++) {
+        for ($i = 0; $i < $n; $i++) {
+            for ($j = 0; $j < $m; $j++) {
                 if ($X[$i] === $Y[$j]) {
                     $fila_actual[$j + 1] = $fila_anterior[$j] + 1;
                 } else {
@@ -65,11 +65,11 @@
         $L1 = lcs_longitud_espacio_lineal($X_izq, $Y);
         $L2 = lcs_longitud_espacio_lineal(strrev($X_der), strrev($Y));
         $k = 0;
-        $max = 0;
+        $max_suma = 0;
         for ($j = 0; $j <= $m; $j++) {
             $suma = $L1[$j] + $L2[$m - $j];
-            if ($suma > $max) {
-                $max = $suma;
+            if ($suma > $max_suma) {
+                $max_suma = $suma;
                 $k = $j;
             }
         }

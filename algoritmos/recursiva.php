@@ -14,12 +14,11 @@ function lcs_recursiva_longitud($X, $Y, $i = null, $j = null) {
     if ($j === null) $j = strlen($Y) - 1;
 
     if ($i < 0 || $j < 0) {
-        return array(0, "");
+        return 0;
     }
 
     if ($X[$i] === $Y[$j]) {
-        list($longitud_sub, $lcs_sub) = lcs_recursiva_longitud($X, $Y, $i - 1, $j - 1);
-        return array($longitud_sub + 1, $lcs_sub . $X[$i]);
+        return 1 + lcs_recursiva_longitud($X, $Y, $i - 1, $j - 1);
     } 
 
     $opcion_a = lcs_recursiva_longitud($X, $Y, $i - 1, $j);
@@ -45,7 +44,7 @@ function reconstruir_lcs_recursivo($X, $Y, $i, $j) {
         return reconstruir_lcs_recursivo($X, $Y, $i - 1, $j - 1) . $X[$i];
     }
     
-    if(lcs_recursiva_longitud($X, $Y, $i - 1, $j)[0] >= lcs_recursiva_longitud($X, $Y, $i, $j - 1)[0]) {
+    if(lcs_recursiva_longitud($X, $Y, $i - 1, $j) >= lcs_recursiva_longitud($X, $Y, $i, $j - 1)) {
         return reconstruir_lcs_recursivo($X, $Y, $i - 1, $j);
     } else {
         return reconstruir_lcs_recursivo($X, $Y, $i, $j - 1);
