@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Genera una cadena aleatoria de una longitud dada usando un alfabeto especificado.
+ * @param int $longitud La longitud de la cadena a generar.
+ * @param string $alfabeto El conjunto de caracteres a usar para generar la cadena.
+ * @return string La cadena aleatoria generada.
+ */
 function generar_cadena_aleatoria($longitud, $alfabeto="ACGT") {
     $cadena = '';
     $maximo = strlen($alfabeto) - 1;
@@ -8,8 +15,15 @@ function generar_cadena_aleatoria($longitud, $alfabeto="ACGT") {
     return $cadena;
 }
 
+/**
+ * Mide el rendimiento de una función que calcula la subsecuencia común más larga (LCS).
+ * @param string $x La primera cadena.
+ * @param string $y La segunda cadena.
+ * @param string $nombre El nombre descriptivo de la función.
+ * @return array Un array asociativo con métricas de rendimiento y resultados.
+ */
 function medir_rendimiento($funcion, $x, $y, $nombre){
-    gc_collect_cycles(); // Limpiar ciclos de recolección de basura
+    gc_collect_cycles(); 
     $memoria_inicial = memory_get_usage(true);
     $tiempo_inicial = microtime(true);
     $exito = true;
@@ -39,7 +53,10 @@ function medir_rendimiento($funcion, $x, $y, $nombre){
 }
 
 
-
+/**
+ * Muestra una tabla con los resultados de las mediciones de rendimiento.
+ * @param array $resultados Un array de arrays asociativos con los resultados de cada medic
+ */
 function mostrar_tabla_resultados($resultados) {
     echo "\n";
     echo "+----------------------+-------------+----------------+------------+------------+-------+\n";
@@ -60,7 +77,9 @@ function mostrar_tabla_resultados($resultados) {
     echo "+----------------------+-------------+----------------+------------+------------+-------+\n";
 }
 
-
+/**
+ * Muestra conclusiones sobre las diferentes versiones del algoritmo LCS.
+ */
 function mostrar_conclusiones() {
     echo "\n";
     echo "VERSIÓN A - RECURSIVA DIRECTA\n";
