@@ -65,7 +65,7 @@ function lcs_recursiva($X, $Y) {
 
     $longitud = lcs_recursiva_longitud($X, $Y, $n - 1, $m - 1);
 
-    if($n <= 15 && $m <= 15){
+    if($n <= 20 && $m <= 20){
         $cadena = reconstruir_lcs_recursivo($X, $Y, $n - 1, $m - 1);
     }else{
         $cadena = "[No calculado por ser cadenas muy largas]";

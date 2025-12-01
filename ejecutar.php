@@ -11,7 +11,7 @@
     echo "  ALGORITMOS LCS - SUBSECUENCIA COMÚN MÁS LARGA  \n";
     echo "=================================================\n\n";
 
-    // ESección 1
+    // Sección 1
     echo "\n";
     echo "=======================\n";
     echo "  EJEMPLO PASO A PASO  \n";
@@ -87,7 +87,7 @@
     echo "  COMPARACIONES    \n";
     echo "=================\n\n";
 
-    $longitudes_prueba = [10, 50, 100, 200, 500, 1000];
+    $longitudes_prueba = [10, 15, 20, 50, 100, 200, 500, 1000];
     $resultados_comparacion = [];
 
     foreach ($longitudes_prueba as $longitud) {
@@ -96,7 +96,7 @@
         $Y_test = generar_cadena_aleatoria($longitud);
 
         //Versión A Recursiva
-        if($longitud <= 15){
+        if($longitud <= 20){
             $res = medir_rendimiento('lcs_recursiva', $X_test, $Y_test, "Recursiva (n=$longitud)");
             $resultados_comparacion[] = $res;
             echo " Recursiva: LCS:{$res['longitud_lcs']}, Tiempo= ".number_format($res['tiempo_ms'], 2). "\n";
